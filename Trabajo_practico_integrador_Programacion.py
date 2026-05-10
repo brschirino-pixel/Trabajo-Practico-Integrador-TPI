@@ -35,11 +35,7 @@ def pais(nombre,poblacion,superficie,continente):
     continente_lista.append(continente)
     return nombre, poblacion, superficie, continente
     
-# Listas:
-nombre_lista = []
-poblacion_lista = []
-continente_lista = []
-superficie_lista = []
+
 
 
 
