@@ -15,37 +15,49 @@ continente = ""
 
 # Funciones de validación de datos:
 
-def validar_texto(texto):
-    while not (texto.isalpha() and texto != "" and len(texto) <= 50):
-        print("El valor ingresado no es un texto válido. Por favor, ingrese solo letras.")
-        texto = input(f"Ingrese el {texto} nuevamente: ").strip()
+def validar_nombre():
+    nombre = input("Ingrese el nombre del país: ").strip().capitalize()
+    while not (nombre.isalpha() and nombre != "" and len(nombre) <= 50):
+        print("El valor ingresado no es válido. Por favor, ingrese solo letras.")
+        nombre = input("Ingrese el nombre del país nuevamente: ").strip().capitalize()
+    return nombre
 
-def validar_numero(cantidad):
-    while not (cantidad.isdigit() and cantidad != "" and int(cantidad) > 0):
-        print("El valor ingresado no es un número válido. Por favor, ingrese un número entero positivo.")
-        cantidad = input(f"Ingrese la {cantidad} nuevamente: ").strip()
+def validar_poblacion():
+    poblacion = input("Ingrese la población del país: ").strip()
+    while not (poblacion.isdigit() and poblacion != "" and int(poblacion) > 0):
+        print("El valor ingresado no es válido. Por favor, ingrese un número entero positivo.")
+        poblacion = input("Ingrese la población nuevamente: ").strip()
+    return int(poblacion)
 
-def validar_continente(continente):
+def validar_superficie():
+    superficie = input("Ingrese la superficie del país: ").strip()
+    while not (superficie.isdigit() and superficie != "" and int(superficie) > 0):
+        print("El valor ingresado no es válido. Por favor, ingrese un número entero positivo.")
+        superficie = input("Ingrese la superficie nuevamente: ").strip()
+    return int(superficie)
+
+def validar_continente():
     continentes_validos = ["África", "Africa","América", "America", "Asia", "Europa", "Oceanía","Oceania"]
+    continente = input(f"Ingrese el continente: ").strip().capitalize()
     while continente not in continentes_validos:
-        print("El continente ingresado no es válido. Por favor, ingrese uno de los siguientes continentes: África, América, Asia, Europa, Oceanía.")
-        continente = input("Ingrese el continente nuevamente: ").strip().capitalize()
+        print(f"El continente ingresado no es válido. Por favor, ingrese uno de los siguientes continentes: África, América, Asia, Europa, Oceanía.")
+        continente = input(f"Ingrese el continente nuevamente: ").strip().capitalize()
+    return continente
 
 # Funciones de ingreso de datos:
 def pais(nombre: str, poblacion: int, superficie: int, continente: str):
-    nombre = input("Ingrese el nombre del país: ").strip().capitalize()
-    validar_texto(nombre)
+    nombre = validar_nombre()
     nombre_lista.append(nombre)
-    poblacion = input("Ingrese la población del país en millones de habitantes: ").strip()
-    validar_numero(poblacion)
+    
+    poblacion = validar_poblacion()
     poblacion_lista.append(poblacion)
-    superficie = input("Ingrese la superficie del país en km²: ").strip()
-    validar_numero(superficie)
+    
+    superficie = validar_superficie()
     superficie_lista.append(superficie)
-    continente = input("Ingrese el continente al que pertenece el país: ").strip().capitalize() 
-    validar_texto(continente)
-    validar_continente(continente)
+    
+    continente = validar_continente()
     continente_lista.append(continente)
+    
     return nombre, poblacion, superficie, continente
     
 # Prueba ingreso de datos:
