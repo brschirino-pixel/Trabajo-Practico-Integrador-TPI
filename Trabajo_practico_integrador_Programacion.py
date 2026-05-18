@@ -12,6 +12,295 @@ superficie = 0
 continente = ""
 
 # Funciones:
+def filtrar_por_continente():
+    
+    continente_buscado = input("Ingrese el continente a filtrar: ").strip().capitalize()
+
+    while continente_buscado == "":
+        print("Error. El continente no puede estar vacío.")
+        continente_buscado = input("Ingrese el continente nuevamente: ").strip().capitalize()
+    
+    encontrados = False
+
+    print("\nPaíses encontrados:\n")
+
+    for i in range(len(nombre_lista)):
+
+        if continente_lista[i] == continente_buscado:
+
+            print(f"Nombre: {nombre_lista[i]}")
+            print(f"Población: {poblacion_lista[i]}")
+            print(f"Superficie: {superficie_lista[i]} km²")
+            print(f"Continente: {continente_lista[i]}")
+            print("---------------------------")
+
+            encontrados = True
+
+    if encontrados == False:
+        print("No se encontraron países en ese continente.")
+
+def filtrar_por_rango_poblacion():
+    
+    minimo = input("Ingrese la población mínima: ").strip()
+
+    while not minimo.isdigit() or int(minimo) < 0:
+        print("Error. Ingrese solo números positivos.")
+        minimo = input("Ingrese la población mínima nuevamente: ").strip()
+
+    maximo = input("Ingrese la población máxima: ").strip()
+
+    while not maximo.isdigit() or int(maximo) < 0:
+        print("Error. Ingrese solo números positivos.")
+        maximo = input("Ingrese la población máxima nuevamente: ").strip()
+
+    minimo = int(minimo)
+    maximo = int(maximo)
+
+    while minimo > maximo:
+
+        print("Error. El mínimo no puede ser mayor al máximo.")
+
+    minimo = int(input("Ingrese nuevamente la población mínima: "))
+    maximo = int(input("Ingrese nuevamente la población máxima: "))
+
+    encontrados = False
+
+    print("\nPaíses encontrados:\n")
+
+    for i in range(len(nombre_lista)):
+
+        if poblacion_lista[i] >= minimo and poblacion_lista[i] <= maximo:
+
+            print(f"Nombre: {nombre_lista[i]}")
+            print(f"Población: {poblacion_lista[i]}")
+            print(f"Superficie: {superficie_lista[i]} km²")
+            print(f"Continente: {continente_lista[i]}")
+            print("---------------------------")
+
+            encontrados = True
+
+    if encontrados == False:
+        print("No se encontraron países en ese rango de población.")
+
+def filtrar_por_rango_superficie():
+    
+    minimo = input("Ingrese la superficie mínima: ").strip()
+
+    while not minimo.isdigit() or int(minimo) < 0:
+        print("Error. Ingrese solo números positivos.")
+        minimo = input("Ingrese la superficie mínima nuevamente: ").strip()
+
+    maximo = input("Ingrese la superficie máxima: ").strip()
+
+    while not maximo.isdigit() or int(maximo) < 0:
+        print("Error. Ingrese solo números positivos.")
+        maximo = input("Ingrese la superficie máxima nuevamente: ").strip()
+
+    minimo = int(minimo)
+    maximo = int(maximo)
+
+    while minimo > maximo:
+
+        print("Error. El mínimo no puede ser mayor al máximo.")
+
+        minimo = int(input("Ingrese nuevamente la superficie mínima: "))
+        maximo = int(input("Ingrese nuevamente la superficie máxima: "))
+
+    encontrados = False
+
+    print("\nPaíses encontrados:\n")
+
+    for i in range(len(nombre_lista)):
+
+        if superficie_lista[i] >= minimo and superficie_lista[i] <= maximo:
+
+            print(f"Nombre: {nombre_lista[i]}")
+            print(f"Superficie: {superficie_lista[i]} km²")
+            print(f"Población: {poblacion_lista[i]}")
+            print(f"Continente: {continente_lista[i]}")
+            print("---------------------------")
+
+            encontrados = True
+
+    if encontrados == False:
+        print("No se encontraron países en ese rango de superficie.")
+
+def ordenar_por_nombre():
+    
+    orden = input("Ingrese 'asc' para ascendente o 'desc' para descendente: ").strip().lower()
+
+    while orden != "asc" and orden != "desc":
+        print("Error. Debe ingresar 'asc' o 'desc'.")
+        orden = input("Ingrese nuevamente el orden: ").strip().lower()
+    
+    for i in range(len(nombre_lista)):
+
+        for j in range(i + 1, len(nombre_lista)):
+
+            if (orden == "asc" and nombre_lista[i] > nombre_lista[j]) or (orden == "desc" and nombre_lista[i] < nombre_lista[j]):
+
+                nombre_lista[i], nombre_lista[j] = nombre_lista[j], nombre_lista[i]
+
+                poblacion_lista[i], poblacion_lista[j] = poblacion_lista[j], poblacion_lista[i]
+
+                superficie_lista[i], superficie_lista[j] = superficie_lista[j], superficie_lista[i]
+
+                continente_lista[i], continente_lista[j] = continente_lista[j], continente_lista[i]
+
+    print("\nPaíses ordenados por nombre:\n")
+
+    for i in range(len(nombre_lista)):
+
+        print(f"Nombre: {nombre_lista[i]}")
+        print(f"Población: {poblacion_lista[i]}")
+        print(f"Superficie: {superficie_lista[i]} km²")
+        print(f"Continente: {continente_lista[i]}")
+        print("---------------------------")
+
+def ordenar_por_poblacion():
+    
+    orden = input("Ingrese 'asc' para ascendente o 'desc' para descendente: ").strip().lower()
+
+    while orden != "asc" and orden != "desc":
+        print("Error. Debe ingresar 'asc' o 'desc'.")
+        orden = input("Ingrese nuevamente el orden: ").strip().lower()
+
+    for i in range(len(poblacion_lista)):
+
+        for j in range(i + 1, len(poblacion_lista)):
+
+            if (orden == "asc" and poblacion_lista[i] > poblacion_lista[j]) or (orden == "desc" and poblacion_lista[i] < poblacion_lista[j]):
+
+                poblacion_lista[i], poblacion_lista[j] = poblacion_lista[j], poblacion_lista[i]
+
+                nombre_lista[i], nombre_lista[j] = nombre_lista[j], nombre_lista[i]
+
+                superficie_lista[i], superficie_lista[j] = superficie_lista[j], superficie_lista[i]
+
+                continente_lista[i], continente_lista[j] = continente_lista[j], continente_lista[i]
+
+    print("\nPaíses ordenados por población:\n")
+
+    for i in range(len(nombre_lista)):
+
+        print(f"Nombre: {nombre_lista[i]}")
+        print(f"Población: {poblacion_lista[i]}")
+        print(f"Superficie: {superficie_lista[i]} km²")
+        print(f"Continente: {continente_lista[i]}")
+        print("---------------------------")
+
+def ordenar_por_superficie():
+    
+    orden = input("Ingrese 'asc' para ascendente o 'desc' para descendente: ").strip().lower()
+
+    while orden != "asc" and orden != "desc":
+        print("Error. Debe ingresar 'asc' o 'desc'.")
+        orden = input("Ingrese nuevamente el orden: ").strip().lower()
+    
+    for i in range(len(superficie_lista)):
+
+        for j in range(i + 1, len(superficie_lista)):
+
+            if (orden == "asc" and superficie_lista[i] > superficie_lista[j]) or (orden == "desc" and superficie_lista[i] < superficie_lista[j]):
+
+                superficie_lista[i], superficie_lista[j] = superficie_lista[j], superficie_lista[i]
+
+                nombre_lista[i], nombre_lista[j] = nombre_lista[j], nombre_lista[i]
+
+                poblacion_lista[i], poblacion_lista[j] = poblacion_lista[j], poblacion_lista[i]
+
+                continente_lista[i], continente_lista[j] = continente_lista[j], continente_lista[i]
+
+    print("\nPaíses ordenados por superficie:\n")
+
+    for i in range(len(nombre_lista)):
+
+        print(f"Nombre: {nombre_lista[i]}")
+        print(f"Población: {poblacion_lista[i]}")
+        print(f"Superficie: {superficie_lista[i]} km²")
+        print(f"Continente: {continente_lista[i]}")
+        print("---------------------------")
+
+# Estadisticas:
+def mayor_y_menor_poblacion():
+    
+    if len(poblacion_lista) == 0:
+        print("No hay países cargados.")
+        return
+    
+    mayor = max(poblacion_lista)
+    menor = min(poblacion_lista)
+
+    indice_mayor = poblacion_lista.index(mayor)
+    indice_menor = poblacion_lista.index(menor)
+
+    print("\nPaís con MAYOR población:")
+    print(f"{nombre_lista[indice_mayor]} - {mayor} habitantes")
+
+    print("\nPaís con MENOR población:")
+    print(f"{nombre_lista[indice_menor]} - {menor} habitantes")
+
+def promedio_poblacion():
+    
+    if len(poblacion_lista) == 0:
+        print("No hay países cargados.")
+        return
+    
+    suma = 0
+
+    for poblacion in poblacion_lista:
+        suma += poblacion
+
+    promedio = suma / len(poblacion_lista)
+
+    print(f"\nEl promedio de población es: {promedio}")
+
+def promedio_superficie():
+    
+    if len(superficie_lista) == 0:
+        print("No hay países cargados.")
+        return
+
+    suma = 0
+
+    for superficie in superficie_lista:
+        suma += superficie
+
+    promedio = suma / len(superficie_lista)
+
+    print(f"\nEl promedio de superficie es: {promedio} km²")
+
+def cantidad_paises_por_continente():
+    
+    africa = 0
+    america = 0
+    asia = 0
+    europa = 0
+    oceania = 0
+
+    for continente in continente_lista:
+
+        if continente == "África" or continente == "Africa":
+            africa += 1
+
+        elif continente == "América" or continente == "America":
+            america += 1
+
+        elif continente == "Asia":
+            asia += 1
+
+        elif continente == "Europa":
+            europa += 1
+
+        elif continente == "Oceanía" or continente == "Oceania":
+            oceania += 1
+
+    print("\nCantidad de países por continente:")
+    print(f"África: {africa}")
+    print(f"América: {america}")
+    print(f"Asia: {asia}")
+    print(f"Europa: {europa}")
+    print(f"Oceanía: {oceania}")
 
 # Funciones de validación de datos:
 
@@ -76,4 +365,7 @@ print(f"Poblaciones: {poblacion_lista}")
 print(f"Superficies: {superficie_lista} km²")
 print(f"Continentes: {continente_lista}")
 
-
+filtrar_por_continente()
+# filtrar_por_rango_poblacion()
+# ordenar_por_nombre()
+# promedio_poblacion()
