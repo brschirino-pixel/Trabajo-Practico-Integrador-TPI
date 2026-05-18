@@ -59,13 +59,26 @@ def pais(nombre: str, poblacion: int, superficie: int, continente: str):
     continente_lista.append(continente)
     
     return nombre, poblacion, superficie, continente
-    
+
+# Importar la biblioteca para trabajar con archivos csv.
+import csv
+
+# Leer el archivo
+with open("datos.csv", mode="r", encoding="utf-8") as archivo:
+    lector_csv = csv.DictReader(archivo)
+    for fila in lector_csv:
+        if len(fila) == 4:  # Verificar que la fila tenga 4 elementos
+            nombre_lista.append(fila["nombre"])
+            poblacion_lista.append(int(fila["poblacion"]))
+            superficie_lista.append(int(fila["superficie"]))
+            continente_lista.append(fila["continente"])
+        
 # Prueba ingreso de datos:
 print("Ingrese los datos del país:")
 pais(nombre, poblacion, superficie, continente)
 print("Datos ingresados:")
 print(f"Nombre: {nombre_lista[-1]}")
-print(f"Población: {poblacion_lista[-1]} millones de habitantes")
+print(f"Población: {poblacion_lista[-1]} habitantes")
 print(f"Superficie: {superficie_lista[-1]} km²")
 print(f"Continente: {continente_lista[-1]}")
 
