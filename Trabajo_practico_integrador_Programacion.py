@@ -328,7 +328,7 @@ def validar_superficie():
 def validar_continente():
     continentes_validos = ["África", "Africa","América", "America", "Asia", "Europa", "Oceanía","Oceania"]
     continente = input(f"Ingrese el continente: ").strip().capitalize()
-    while continente not in continentes_validos:
+    while not (continente.isalpha() and continente != "" and len(continente) <= 50 and continente in continentes_validos):
         print(f"El continente ingresado no es válido. Por favor, ingrese uno de los siguientes continentes: África, América, Asia, Europa, Oceanía.")
         continente = input(f"Ingrese el continente nuevamente: ").strip().capitalize()
     return continente
