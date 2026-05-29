@@ -1,0 +1,32 @@
+# Archivos de Python compilados
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Entornos virtuales (por si usás uno)
+venv/
+env/
+.venv/
+
+# Archivos de VS Code
+.vscode/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Logs o archivos temporales
+*.log
+
+# Archivos de backup
+*.bak
+
+# Archivos comprimidos de entrega (si los generás)
+*.zip
+
+# Archivos temporales de Python
+*.tmp
+
+# Opcional: ignorar caché de pytest si lo usaras
+.pytest_cache/
