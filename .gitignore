@@ -4,7 +4,7 @@ __pycache__/
 *.pyo
 *.pyd
 
-# Entornos virtuales (por si usás uno)
+# Entornos virtuales
 venv/
 env/
 .venv/
@@ -16,17 +16,21 @@ env/
 .DS_Store
 Thumbs.db
 
+# Windows adicional
+desktop.ini
+$RECYCLE.BIN/
+
 # Logs o archivos temporales
 *.log
 
 # Archivos de backup
 *.bak
 
-# Archivos comprimidos de entrega (si los generás)
+# Archivo comprimido de entrega
 *.zip
 
 # Archivos temporales de Python
 *.tmp
 
-# Opcional: ignorar caché de pytest si lo usaras
+# Ignorar caché de pytest 
 .pytest_cache/
