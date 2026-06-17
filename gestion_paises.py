@@ -284,8 +284,13 @@ def agregar_pais():
     poblaciones.append(poblacion)
     superficies.append(superficie)
     continentes.append(continente)
-
-    print("\nPaís agregado correctamente.")
+    
+    # Imprimir confirmacion de los datos agregados.
+    print("\nPaís agregado correctamente: ")
+    print(f"\nNombre: {nombre}")
+    print(f"Población: {poblacion} habitantes")
+    print(f"Superficie: {superficie} km²")
+    print(f"Continente: {continente}")
 
 def actualizar_pais():
 
@@ -311,8 +316,12 @@ def actualizar_pais():
 
             superficies[i] = validar_superficie("Ingrese la nueva superficie")
 
-            print("\nDatos actualizados correctamente.")
-
+            print("\nDatos actualizados correctamente:")
+            print(f"\nNombre: {nombres[i]}")
+            print(f"Población: {poblaciones[i]} habitantes")
+            print(f"Superficie: {superficies[i]} km²")
+            print(f"Continente: {continentes[i]}")
+            
             encontrado = True
 
             break
@@ -407,7 +416,7 @@ def filtrar_por_rango_poblacion():
 
         print(
             "\nNo se encontraron países "
-            "en ese rango."
+            "cuya población se encuentre en ese rango."
         )
 def filtrar_por_rango_superficie():
 
@@ -447,7 +456,7 @@ def filtrar_por_rango_superficie():
 
         print(
             "\nNo se encontraron países "
-            "en ese rango."
+            "cuya superficie se encuentre en ese rango."
         )
 
 # ==================================================
@@ -574,7 +583,7 @@ def promedio_poblacion():
 
     promedio = sum(poblaciones) / len(poblaciones)
 
-    print(f"\nPromedio de población: {promedio:,.2f}")
+    print(f"\nPromedio de población: {promedio:,.2f} habitantes")
 
 def promedio_superficie():
 
